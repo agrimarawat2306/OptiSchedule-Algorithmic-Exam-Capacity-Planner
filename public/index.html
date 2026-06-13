@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Exam Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Smart Exam Planner</h1>
+    </header>
+
+    <main>
+        <section class="card" id="input-section">
+            <h2>1. Global Constraints</h2>
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Total Classrooms</label>
+                    <input type="number" id="classrooms" value="10" min="1">
+                </div>
+                <div class="input-group">
+                    <label>Seats Per Classroom</label>
+                    <input type="number" id="accommodation" value="30" min="1">
+                </div>
+                <div class="input-group">
+                    <label>Shifts Per Day</label>
+                    <select id="shifts">
+                        <option value="1">1 (Morning Only)</option>
+                        <option value="2">2 (Morning & Afternoon)</option>
+                        <option value="3" selected>3 (Morning, Afternoon & Evening)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Total Seats Available</label>
+                    <input type="text" id="total-seats" value="300" readonly
+                        style="background-color: #eee; cursor: not-allowed; color: #555;">
+                </div>
+                <div class="input-group">
+                    <label>Exam Duration (Hours)</label>
+                    <select id="duration">
+                        <option value="0.5">0.5 Hour</option>
+                        <option value="1">1 Hour</option>
+                        <option value="1.5">1.5 Hours</option>
+                        <option value="2" selected>2 Hours</option>
+                        <option value="2.5">2.5 Hours</option>
+                        <option value="3">3 Hours</option>
+                        <option value="3.5">3.5 Hours</option>
+                        <option value="4">4 Hours</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Required Day Gap</label>
+                    <select id="gap">
+                        <option value="0" selected>0 (Consecutive days)</option>
+                        <option value="1">1 Day Gap</option>
+                        <option value="2">2 Day Gap</option>
+                        <option value="3">3 Day Gap</option>
+                        <option value="4">4 Day Gap</option>
+                        <option value="5">5 Day Gap</option>
+                    </select>
+                </div>
+            </div>
+
+            <h2>2. Department Requirements</h2>
+            <div id="departments-container">
+            </div>
+            <button id="add-dept-btn" type="button" class="btn secondary">+ Add Department</button>
+
+            <div class="action-row">
+                <button id="generate-btn" type="button" class="btn primary">Generate Optimal Schedule</button>
+            </div>
+        </section>
+
+        <section class="card hidden" id="output-section">
+            <h2>Schedule Results</h2>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTable('dept-table')">By Department</button>
+                <button class="tab-btn" onclick="showTable('day-table')">By Day</button>
+                <button class="tab-btn" onclick="showTable('room-table')">Seating Plan</button>
+            </div>
+
+            <div id="table-container">
+            </div>
+
+            <div class="action-row">
+                <button onclick="location.reload()" type="button" class="btn secondary">Start Over</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
